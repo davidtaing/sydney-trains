@@ -58,7 +58,11 @@ defmodule SydneyTrains.MixProject do
       {:gettext, "~> 0.20"},
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
-      {:bandit, "~> 1.5"}
+      {:bandit, "~> 1.5"},
+      {:kino_maplibre, "~> 0.1.12"},
+      {:protobuf, "~> 0.10.0"},
+      {:req, "~> 0.5.6"},
+      {:geo, "~> 3.6.0"}
     ]
   end
 

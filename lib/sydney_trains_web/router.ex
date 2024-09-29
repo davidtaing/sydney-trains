@@ -17,7 +17,7 @@ defmodule SydneyTrainsWeb.Router do
   scope "/", SydneyTrainsWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    live "/", Live.Map, :index
   end
 
   # Other scopes may use custom stacks.
