@@ -62,7 +62,8 @@ defmodule SydneyTrains.MixProject do
       {:kino_maplibre, "~> 0.1.12"},
       {:protobuf, "~> 0.10.0"},
       {:req, "~> 0.5.6"},
-      {:geo, "~> 3.6.0"}
+      {:geo, "~> 3.6.0"},
+      {:envy, "~> 1.1.1"}
     ]
   end
 
