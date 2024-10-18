@@ -20,7 +20,7 @@ config :sydney_trains, SydneyTrainsWeb.Endpoint,
     layout: false
   ],
   pubsub_server: SydneyTrains.PubSub,
-  live_view: [signing_salt: "08G9sNig"]
+  live_view: [signing_salt: "oeu+wRc3"]
 
 # Configures the mailer
 #

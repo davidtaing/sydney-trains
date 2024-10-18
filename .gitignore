@@ -37,3 +37,7 @@ npm-debug.log
 
 # Development Secrets
 config/.env.dev
+
+# Database files
+*.db
+*.db-*

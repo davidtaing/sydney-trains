@@ -2,13 +2,10 @@ import Config
 
 # Configure your database
 config :sydney_trains, SydneyTrains.Repo,
-  username: "postgres",
-  password: "postgres",
-  hostname: "localhost",
-  database: "sydney_trains_dev",
+  database: Path.expand("../sydney_trains_dev.db", __DIR__),
+  pool_size: 5,
   stacktrace: true,
-  show_sensitive_data_on_connection_error: true,
-  pool_size: 10
+  show_sensitive_data_on_connection_error: true
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
@@ -23,7 +20,7 @@ config :sydney_trains, SydneyTrainsWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "oBmTcUTh1nbbophsA8NoVTaFyB8w6oX3WmFVqBwkpyU4LwUw86mMG+y4YeY4xWwx",
+  secret_key_base: "oKxEtVjtIfIQ9ruUkjuw1M9TINLh/itXCI5/g64qoCDu1IrXKLksnya/1i6ZK7Xs",
   watchers: [
     esbuild: {Esbuild, :install_and_run, [:sydney_trains, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:sydney_trains, ~w(--watch)]}

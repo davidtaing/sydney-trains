@@ -6,18 +6,15 @@ import Config
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
 config :sydney_trains, SydneyTrains.Repo,
-  username: "postgres",
-  password: "postgres",
-  hostname: "localhost",
-  database: "sydney_trains_test#{System.get_env("MIX_TEST_PARTITION")}",
-  pool: Ecto.Adapters.SQL.Sandbox,
-  pool_size: System.schedulers_online() * 2
+  database: Path.expand("../sydney_trains_test.db", __DIR__),
+  pool_size: 5,
+  pool: Ecto.Adapters.SQL.Sandbox
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
 config :sydney_trains, SydneyTrainsWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "0ACGCihtTR3Tx1h9YcFuViBOVctqVfZsPMadojZdkjwlyH7zLEFI1bmnC0uKJwMY",
+  secret_key_base: "fiyql/E1F1J+QARFDfTndzhc9I4pNFuRE5Q8aBBBjQ65kEDeX8QXrx/D8i0lVsA2",
   server: false
 
 # In test we don't send emails

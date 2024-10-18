@@ -7,7 +7,7 @@ defmodule SydneyTrainsWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_sydney_trains_key",
-    signing_salt: "m8iRR5Ly",
+    signing_salt: "AEInmf1V",
     same_site: "Lax"
   ]
 
