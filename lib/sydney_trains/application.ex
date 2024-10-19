@@ -11,12 +11,12 @@ defmodule SydneyTrains.Application do
       SydneyTrainsWeb.Telemetry,
       SydneyTrains.Repo,
       {Ecto.Migrator,
-        repos: Application.fetch_env!(:sydney_trains, :ecto_repos),
-        skip: skip_migrations?()},
+       repos: Application.fetch_env!(:sydney_trains, :ecto_repos), skip: skip_migrations?()},
       {DNSCluster, query: Application.get_env(:sydney_trains, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: SydneyTrains.PubSub},
       # Start the Finch HTTP client for sending emails
       {Finch, name: SydneyTrains.Finch},
+      SydneyTrains.RealtimePositions,
       # Start a worker by calling: SydneyTrains.Worker.start_link(arg)
       # {SydneyTrains.Worker, arg},
       # Start to serve requests, typically the last entry
