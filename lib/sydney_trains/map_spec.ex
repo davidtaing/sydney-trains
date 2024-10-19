@@ -23,35 +23,43 @@ defmodule SydneyTrains.MapSpec do
   def load_train_lines() do
     %{
       t1_north_shore_and_western_line:
-        "./priv/trainlines/x0001_2-T1-W-sj2-1_0.geojson"
+        :code.priv_dir(:sydney_trains)
+        |> Path.join("trainlines/x0001_2-T1-W-sj2-1_0.geojson")
         |> File.read!()
         |> Jason.decode!(),
       t2_inner_west_and_leppington:
-        "./priv/trainlines/x0001_2-T2-sj2-1_1.geojson"
+        :code.priv_dir(:sydney_trains)
+        |> Path.join("trainlines/x0001_2-T2-sj2-1_1.geojson")
         |> File.read!()
         |> Jason.decode!(),
       t3_bankstown_line:
-        "./priv/trainlines/x0001_2-T3-sj2-1_0.geojson"
+        :code.priv_dir(:sydney_trains)
+        |> Path.join("trainlines/x0001_2-T3-sj2-1_0.geojson")
         |> File.read!()
         |> Jason.decode!(),
       t4_eastern_suburbs_and_illawarra_line:
-        "./priv/trainlines/x0001_2-T4-sj2-1_0.geojson"
+        :code.priv_dir(:sydney_trains)
+        |> Path.join("trainlines/x0001_2-T4-sj2-1_0.geojson")
         |> File.read!()
         |> Jason.decode!(),
       t5_cumberland_line:
-        "./priv/trainlines/x0001_2-T5-sj2-1_0.geojson"
+        :code.priv_dir(:sydney_trains)
+        |> Path.join("trainlines/x0001_2-T5-sj2-1_0.geojson")
         |> File.read!()
         |> Jason.decode!(),
       t7_olympic_park_line:
-        "./priv/trainlines/x0001_2-T7-sj2-1_0.geojson"
+        :code.priv_dir(:sydney_trains)
+        |> Path.join("trainlines/x0001_2-T7-sj2-1_0.geojson")
         |> File.read!()
         |> Jason.decode!(),
       t8_airport_and_south_line:
-        "./priv/trainlines/x0001_2-T8-sj2-1_0.geojson"
+        :code.priv_dir(:sydney_trains)
+        |> Path.join("trainlines/x0001_2-T8-sj2-1_0.geojson")
         |> File.read!()
         |> Jason.decode!(),
       t9_northern_line:
-        "./priv/trainlines/x0001_2-T9-sj2-1_0.geojson"
+        :code.priv_dir(:sydney_trains)
+        |> Path.join("trainlines/x0001_2-T9-sj2-1_0.geojson")
         |> File.read!()
         |> Jason.decode!()
     }
