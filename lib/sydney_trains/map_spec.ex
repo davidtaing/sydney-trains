@@ -1,13 +1,15 @@
 defmodule SydneyTrains.MapSpec do
   alias MapLibre, as: Ml
 
+  @sydney_coordinates {151.2093, -33.8688}
+
   def spec() do
     train_lines = load_train_lines()
 
     Ml.new(
       style: :street,
       zoom: 13,
-      center: {151.2093, -33.8688}
+      center: @sydney_coordinates
     )
     |> draw_t1_line(train_lines)
     |> draw_t2_line(train_lines)
