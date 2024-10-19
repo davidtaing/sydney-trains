@@ -9,7 +9,7 @@ defmodule SydneyTrainsWeb.Live.Map do
     socket =
       socket
       |> assign(:id, socket.id)
-      |> assign(:map_spec, map_spec)
+      |> assign(:map_spec, MapSpec.spec())
 
     {:ok,
      push_event(socket, "map:#{socket.id}:init", %{

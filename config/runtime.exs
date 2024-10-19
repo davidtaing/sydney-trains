@@ -1,5 +1,9 @@
 import Config
 
+if config_env() in [:dev, :test] do
+  Envy.load(["config/.env.#{config_env()}"])
+end
+
 # config/runtime.exs is executed for all environments, including
 # during releases. It is executed after compilation and before the
 # system starts, so it is typically used to load production configuration
@@ -111,3 +115,5 @@ if config_env() == :prod do
   #
   # See https://hexdocs.pm/swoosh/Swoosh.html#module-installation for details.
 end
+
+config :sydney_trains, :tfnsw_api_key, System.get_env("TFNSW_API_KEY")

@@ -1,6 +1,7 @@
 defmodule SydneyTrains.RealtimePositions do
   use GenServer
   alias Phoenix.PubSub
+  alias SydneyTrains.Api
 
   require Logger
 
@@ -18,7 +19,15 @@ defmodule SydneyTrains.RealtimePositions do
   end
 
   def handle_info(:update, _params) do
-    Logger.info("HELLO WORLD")
+    Api.get_vehicle_positions()
+    |> Api.vehicle_positions_to_geojson()
+    |> then(fn geojson ->
+      PubSub.broadcast(SydneyTrains.PubSub, "realtime_positions", %{
+        :updated_at => DateTime.utc_now(),
+        :geojson => geojson
+      })
+    end)
+
     {:noreply, %{}}
   end
 
