@@ -1,10 +1,12 @@
 defmodule SydneyTrains.MapSpec do
   alias MapLibre, as: Ml
+  alias SydneyTrains.Api
 
   @sydney_coordinates {151.2093, -33.8688}
 
   def spec() do
     train_lines = load_train_lines()
+    realtime_positions = load_realtime_positions()
 
     Ml.new(
       style: :street,
@@ -19,7 +21,26 @@ defmodule SydneyTrains.MapSpec do
     |> draw_t7_line(train_lines)
     |> draw_t8_line(train_lines)
     |> draw_t9_line(train_lines)
+    |> Ml.add_source(
+      "realtime_positions",
+      type: :geojson,
+      data: realtime_positions
+    )
+    |> Ml.add_layer(
+      id: "positions",
+      type: :circle,
+      source: "realtime_positions",
+      paint: %{
+        "circle-radius" => 8,
+        "circle-color" => "#000000"
+      }
+    )
     |> Ml.to_spec()
+  end
+
+  def load_realtime_positions() do
+    Api.get_vehicle_positions()
+    |> Api.vehicle_positions_to_geojson()
   end
 
   def load_train_lines() do
