@@ -12,6 +12,10 @@ const Map = {
 
       this.props.map = map
     })
+
+    this.handleEvent(`map:${this.props.id}:positions_updated`, ({ geojson }) => {
+      this.props.map.getSource('realtime_positions').setData(geojson)
+    })
   },
 }
 

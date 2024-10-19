@@ -22,10 +22,15 @@ defmodule SydneyTrains.RealtimePositions do
     Api.get_vehicle_positions()
     |> Api.vehicle_positions_to_geojson()
     |> then(fn geojson ->
-      PubSub.broadcast(SydneyTrains.PubSub, "realtime_positions", %{
-        :updated_at => DateTime.utc_now(),
-        :geojson => geojson
-      })
+      PubSub.broadcast(
+        SydneyTrains.PubSub,
+        "realtime_positions",
+        {:realtime_positions_updated,
+         %{
+           updated_at: DateTime.utc_now(),
+           geojson: geojson
+         }}
+      )
     end)
 
     {:noreply, %{}}
